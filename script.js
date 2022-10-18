@@ -1,23 +1,32 @@
+/*  Choices & 
+    Game variables */
 const choices = ["rock", "paper", "scissors"];
 let round = 0;
 let computerScore = 0;
 let playerScore = 0;
 
-function computerPlay () {
+/*  Computer Random Choice Generator & 
+    Player Choice Input (with validation) */
+function computerPlay() {
     const computerChoice = choices[Math.floor(Math.random() * choices.length)];
     return computerChoice;
 }
 
-function playerPlay () {
-    let playerChoice = prompt (`Type your choice: "rock", "paper" or "scissors".`).toLowerCase().trim();
+function playerPlay() {
+    let playerChoice = prompt(`Type your choice: "rock", "paper" or "scissors".`).toLowerCase().trim();
     if (!choices.includes(playerChoice) || playerChoice == null) {
-        alert (`Must enter a valid input! Type "Rock", "Paper" or "Scissors".`);
+        alert(`Must enter a valid input! Type "Rock", "Paper" or "Scissors".`);
     } else {
         return playerChoice;
     }
 }
 
-function playRound (computerChoice, playerChoice) {
+/*  Results Handler:
+    - comparing choices;
+    - round counter;
+    - round results;
+    - scores counter */
+function playRound(computerChoice, playerChoice) {
     if (computerChoice === playerChoice) {
         round++;
         return (`|ROUND: ${round} | ❌ It's a tie!
@@ -74,8 +83,13 @@ function playRound (computerChoice, playerChoice) {
     }
 }
 
-function game () {
-    alert (`Welcome to JavaScript - Rock | Paper | Scissors - Console Game!`)
+/*  - Game Initializer; 
+    - Round Iteration (best of 5 rounds);
+    - Round control for canceled player input;
+    - Round function parameters;
+    - FINAL RESULTS for the match */
+function game() {
+    alert(`Welcome to JavaScript - Rock | Paper | Scissors - Console Game!`)
     for (let i = 0; i < 5; i++) {
         let playerSelection = playerPlay();
         if (playerSelection == undefined) {
@@ -83,7 +97,7 @@ function game () {
         } else {
             console.log(playRound(computerPlay(), playerSelection));
         }
-        
+
     }
     if (computerScore === playerScore) {
         console.log(`Final Score: |You - ${playerScore} vs ${computerScore} - Me|
