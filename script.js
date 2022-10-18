@@ -97,7 +97,6 @@ function game() {
         } else {
             console.log(playRound(computerPlay(), playerSelection));
         }
-
     }
     if (computerScore === playerScore) {
         console.log(`Final Score: |You - ${playerScore} vs ${computerScore} - Me|
